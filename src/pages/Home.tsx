@@ -36,7 +36,7 @@ const api = process.env.REACT_APP_BACKEND
     if (!newComment.trim()) return;
 
     try {
-      const res = await fetch('api/comments', {
+      const res = await fetch(`${api}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +217,7 @@ const api = process.env.REACT_APP_BACKEND
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`api/posts/${postId}`, {
+      const res = await fetch(`${api}/posts/${postId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

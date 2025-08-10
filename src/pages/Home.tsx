@@ -36,7 +36,7 @@ const api = process.env.REACT_APP_BACKEND
     if (!newComment.trim()) return;
 
     try {
-      const res = await fetch(`${api}/comments`, {
+      const res = await (`${api}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ const api = process.env.REACT_APP_BACKEND
     
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("/posts", {
+      const res = await fetch(`${api}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

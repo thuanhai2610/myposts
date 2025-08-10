@@ -36,7 +36,7 @@ const api = process.env.REACT_APP_BACKEND
     if (!newComment.trim()) return;
 
     try {
-      const res = await (`${api}/comments`, {
+      const res = await fetch(`${api}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -28,7 +28,7 @@ function CommentSection({ postId, comments, onCommentSuccess }: { postId: string
   const [newComment, setNewComment] = useState('');
   const [error, setError] = useState('');
   const token = localStorage.getItem('token');
-
+const api = process.env.REACT_APP_BACKEND
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -36,7 +36,7 @@ function CommentSection({ postId, comments, onCommentSuccess }: { postId: string
     if (!newComment.trim()) return;
 
     try {
-      const res = await fetch('http://localhost:3000/comments', {
+      const res = await fetch('api/comments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,6 @@ export default function ForumHome() {
   const [showAuthPage, setShowAuthPage] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false)
 const api = process.env.REACT_APP_BACKEND
-console.log(api)
   useEffect(() => {
     try {
       const token = localStorage.getItem("token");
@@ -165,7 +164,7 @@ console.log(api)
     
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/posts", {
+      const res = await fetch("/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -218,7 +217,7 @@ console.log(api)
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/posts/${postId}`, {
+      const res = await fetch(`api/posts/${postId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
